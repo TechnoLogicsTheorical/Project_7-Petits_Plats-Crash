@@ -1,0 +1,152 @@
+*, :before, :after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0 100px;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+}
+
+/*-------------------------------------*/
+#mainHeader {
+    display: flex;
+    justify-content: center;
+    margin-top: 42px;
+    margin-bottom: 17px;
+}
+
+#mainHeader img {
+    width: 268px;
+    height: auto;
+}
+/*-------------------------------------*/
+
+/* Définir le reset des inputs*/
+#searchContainer input {
+    height: 69px;
+    border: none;
+
+}
+
+/* Bar de recettes avec le button de recherche */
+#searchRecipeContainer {
+    position: relative;
+}
+
+#searchRecipeContainer #recipesSearch {
+    width: 100%;
+    padding: 24px;
+    font-size: inherit;
+
+    border-radius: 5px;
+    background: #E7E7E7;
+}
+
+#searchContainer #recipesSearch + button {
+    appearance: none;
+    border: none;
+    background: transparent;
+
+    position: absolute;
+    top: calc(50% - 22px);
+    right: 10px;
+}
+
+/*-------------------------------------*/
+#extraButtonsSearchContainer {
+    display: flex;
+    column-gap: 20px;
+    margin: 25px auto;
+}
+
+/* Boutons de recherche extras */
+#ingredientsSearch, #equipmentsSearch, #utensilsSearch {
+    width: 170px;
+    padding-left: 15px;
+    font-size: inherit;
+    border-radius: 5px;
+    color: white;
+}
+
+#ingredientsSearch::placeholder, #equipmentsSearch::placeholder, #utensilsSearch::placeholder {
+    color: inherit;
+}
+
+#ingredientsSearch {
+    background: #3282F7;
+}
+
+#equipmentsSearch {
+    background: #68D9A4;
+}
+
+#utensilsSearch {
+    background: #ED6454;
+}
+
+/*-------------------------------------*/
+#recipesContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recipeItem {
+    min-width: 380px;
+    width: 30%;
+    background: #E7E7E7;
+    border-radius: 5px;
+}
+
+.recipeItem .imageContainer {
+    background: #C7BEBE;
+    height: 178px;
+    border-radius: 5px 5px 0 0;
+}
+
+.recipeDetails {
+   padding: 20px;
+}
+
+
+.recipeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.recipeHeader h2 {
+    font-weight: normal;
+    font-size: inherit;
+}
+
+.recipeHeader span {
+    display: flex;
+}
+
+.recipeHeader time {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+
+.recipeText {
+    font-size: 12px;
+    display: flex;
+}
+
+.recipeIngredients {
+    list-style: none;
+}
+
+.recipeIngredients li>span:first-of-type {
+    font-weight: bold;
+}
+
+.recipeIngredients,
+.recipeInstruction {
+    width: 50%;
+}
