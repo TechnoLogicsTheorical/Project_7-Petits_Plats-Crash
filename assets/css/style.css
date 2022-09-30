@@ -10,6 +10,12 @@ body {
     font-size: 18px;
 }
 
+:root {
+    --blue-color: #3282F7;
+    --green-color: #68D9A4;
+    --orange-color: #ED6454;
+}
+
 /*-------------------------------------*/
 #mainHeader {
     display: flex;
@@ -54,6 +60,27 @@ body {
     top: calc(50% - 22px);
     right: 10px;
 }
+/*-------------------------------------*/
+#activeFiltersSearch {
+    margin-top: 25px;
+}
+
+.filterElement {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.filterElement button {
+    margin-left: 11px;
+    border: none;
+    appearance: none;
+    background: transparent;
+    cursor:pointer;
+}
 
 /*-------------------------------------*/
 #extraButtonsSearchContainer {
@@ -63,34 +90,65 @@ body {
 }
 
 /* Boutons de recherche extras */
-#ingredientsSearch, #equipmentsSearch, #utensilsSearch {
+#ingredientsSearch,
+#equipmentsSearch,
+#utensilsSearch {
     width: 170px;
     padding-left: 15px;
     font-size: inherit;
     border-radius: 5px;
     color: white;
+
+    position: relative;
 }
 
-#ingredientsSearch::placeholder, #equipmentsSearch::placeholder, #utensilsSearch::placeholder {
+#ingredientsSearch::placeholder,
+#equipmentsSearch::placeholder,
+#utensilsSearch::placeholder {
     color: inherit;
 }
 
-#ingredientsSearch {
-    background: #3282F7;
+#ingredientsSearch,
+.filterElement.ingredientColor {
+    background: var(--blue-color);
 }
 
-#equipmentsSearch {
-    background: #68D9A4;
+#equipmentsSearch,
+.filterElement.equipmentColor {
+    background: var(--green-color);
 }
 
-#utensilsSearch {
-    background: #ED6454;
+#utensilsSearch,
+.filterElement.utensilColor {
+    background: var(--orange-color);
+}
+
+/* Permet de supprimer les fléches existantes sur les inputs */
+input::-webkit-calendar-picker-indicator {
+    display: none;
+    opacity: 0;
+}
+.btn_container {
+    position: relative;
+}
+
+.arrowElement {
+    width: 32px;
+    height: 32px;
+    background: url("../img/icons/arrow.png");
+
+    position: absolute;
+    top: calc(50% - 16px);
+    right: 16px;
+    z-index: 2;
+    cursor: pointer;
 }
 
 /*-------------------------------------*/
 #recipesContainer {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .recipeItem {
@@ -98,6 +156,7 @@ body {
     width: 30%;
     background: #E7E7E7;
     border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .recipeItem .imageContainer {
@@ -125,6 +184,7 @@ body {
 
 .recipeHeader span {
     display: flex;
+    justify-content: center;
 }
 
 .recipeHeader time {
