@@ -14,36 +14,54 @@
 		<title>Les petits plats</title>
 	</head>
 	<body>
-		<header id="mainHeader">
+		<header id="MAIN_HEADER">
 			<h1>
 				<img src="assets/img/logo.png" alt="Logo: Les petits plats"/>
 			</h1>
 		</header>
 	
 		<main>
-			<section id="searchContainer">
-				<form>
-					<div id="searchRecipeContainer">
-						<input type="search" name="recipesQuery" id="recipesSearch" placeholder="Recherche une recette">
-						<button type="submit">
-							<img src="assets/img/icons/search.svg" alt="Lancer la recherche"/>
-						</button>
-					</div>
+			<section>
+				<form id="RECIPES_BAR">
+					<input type="search"
+					       name="recipesQuery"
+					       class="btn"
+					       placeholder="Recherche une recette"
+					>
+					<button
+						type="submit"
+						class="icon"
+					>
+						<img src="assets/img/icons/search.svg" alt="Lancer la recherche"/>
+					</button>
 				</form>
 
-				<div id="activeFiltersSearch">
+				<div id="ACTIVE_FILTERS" aria-hidden="true">
 
-					<div class="filterElement ingredientColor">
-						<span class="ingredientTitle">Coco</span>
-						<button class="delete"><img src="assets/img/icons/crossAround.svg" alt="Supprimer l'élément"></button>
+					<div class="filter-element ingredient">
+						<span class="title">Coco</span>
+						<button class="delete">
+							<img
+									src="assets/img/icons/crossAround.svg"
+									alt="Supprimer l'élément"
+							>
+						</button>
 					</div>
 
 				</div>
 
-				<div id="extraButtonsSearchContainer">
-					<div class="btn_container">
-						<span class="arrowElement"></span>
-						<input type="search" name="ingredientsQuery" id="ingredientsSearch" placeholder="Ingrédients" list="ingredientsList">
+				<div id="EXTRAS_BUTTONS">
+
+					<div class="btn-wrapper">
+						<span class="arrow-icon"></span>
+						<input
+								type="search"
+								name="ingredientsQuery"
+								id="ingredientsSearch"
+								class="btn"
+								placeholder="Ingrédients"
+								list="ingredientsList"
+						>
 						<datalist id="ingredientsList">
 							<option value="Lait de coco">
 							<option value="Sucre">
@@ -51,9 +69,16 @@
 						</datalist>
 					</div>
 
-					<div class="btn_container">
-						<span class="arrowElement"></span>
-						<input type="search" name="equipmentsQuery" id="equipmentsSearch" placeholder="Appareils" list="equipmentsList">
+					<div class="btn-wrapper">
+						<span class="arrow-icon"></span>
+						<input
+								type="search"
+								name="equipmentsQuery"
+								id="equipmentsSearch"
+								class="btn"
+								placeholder="Appareils"
+								list="equipmentsList"
+						>
 						<datalist id="equipmentsList">
 							<option value="Lait de coco">
 							<option value="Sucre">
@@ -61,37 +86,45 @@
 						</datalist>
 					</div>
 
-					<div class="btn_container">
-						<span class="arrowElement"></span>
-						<input type="search" name="utensilsQuery" id="utensilsSearch" placeholder="Ustensiles" list="utensilsList">
+					<div class="btn-wrapper">
+						<span class="arrow-icon"></span>
+						<input
+								type="search"
+						        name="utensilsQuery"
+								id="utensilsSearch"
+								class="btn"
+								placeholder="Ustensiles"
+								list="utensilsList"
+						>
 						<datalist id="utensilsList">
 							<option value="Lait de coco">
 							<option value="Sucre">
 							<option value="Concombre">
 						</datalist>
 					</div>
+
 				</div>
 			</section>
 			
 			<!--    Conteneur des recettes trouvées     -->
-			<section id="recipesContainer">
+			<section id="RECIPES">
 
-				<article class="recipeItem">
-					<header class="imageContainer">
+				<article class="recipe-card">
+					<header class="image-wrapper">
 
 					</header>
 
-					<main class="recipeDetails">
-						<div class="recipeHeader">
-							<h2>Limonade de Coco</h2>
-							<span>
+					<main class="details">
+						<div class="header">
+							<h2 class="title">Limonade de Coco</h2>
+							<span class="time-wrapper">
 								<img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
 								<time>10 min</time>
 							</span>
 						</div>
 
-						<div class="recipeText">
-							<ul class="recipeIngredients">
+						<div class="text">
+							<ul class="ingredients">
 								<li>
 									<span>Lait de coco: </span>
 									<span>400ml</span>
@@ -114,28 +147,28 @@
 								</li>
 							</ul>
 
-							<p class="recipeInstruction">
+							<p class="instructions">
 								Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
 							</p>
 						</div>
 					</main>
 				</article>
-				<article class="recipeItem">
-					<header class="imageContainer">
+				<article class="recipe-card">
+					<header class="image-wrapper">
 
 					</header>
 
-					<main class="recipeDetails">
-						<div class="recipeHeader">
-							<h2>Limonade de Coco</h2>
-							<span>
+					<main class="details">
+						<div class="header">
+							<h2 class="title">Limonade de Coco</h2>
+							<span class="time-wrapper">
 								<img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
 								<time>10 min</time>
 							</span>
 						</div>
 
-						<div class="recipeText">
-							<ul class="recipeIngredients">
+						<div class="text">
+							<ul class="ingredients">
 								<li>
 									<span>Lait de coco: </span>
 									<span>400ml</span>
@@ -158,28 +191,28 @@
 								</li>
 							</ul>
 
-							<p class="recipeInstruction">
+							<p class="instructions">
 								Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
 							</p>
 						</div>
 					</main>
 				</article>
-				<article class="recipeItem">
-					<header class="imageContainer">
+				<article class="recipe-card">
+					<header class="image-wrapper">
 
 					</header>
 
-					<main class="recipeDetails">
-						<div class="recipeHeader">
-							<h2>Limonade de Coco</h2>
-							<span>
+					<main class="details">
+						<div class="header">
+							<h2 class="title">Limonade de Coco</h2>
+							<span class="time-wrapper">
 								<img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
 								<time>10 min</time>
 							</span>
 						</div>
 
-						<div class="recipeText">
-							<ul class="recipeIngredients">
+						<div class="text">
+							<ul class="ingredients">
 								<li>
 									<span>Lait de coco: </span>
 									<span>400ml</span>
@@ -202,28 +235,28 @@
 								</li>
 							</ul>
 
-							<p class="recipeInstruction">
+							<p class="instructions">
 								Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
 							</p>
 						</div>
 					</main>
 				</article>
-				<article class="recipeItem">
-					<header class="imageContainer">
+				<article class="recipe-card">
+					<header class="image-wrapper">
 
 					</header>
 
-					<main class="recipeDetails">
-						<div class="recipeHeader">
-							<h2>Limonade de Coco</h2>
-							<span>
+					<main class="details">
+						<div class="header">
+							<h2 class="title">Limonade de Coco</h2>
+							<span class="time-wrapper">
 								<img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
 								<time>10 min</time>
 							</span>
 						</div>
 
-						<div class="recipeText">
-							<ul class="recipeIngredients">
+						<div class="text">
+							<ul class="ingredients">
 								<li>
 									<span>Lait de coco: </span>
 									<span>400ml</span>
@@ -246,28 +279,28 @@
 								</li>
 							</ul>
 
-							<p class="recipeInstruction">
+							<p class="instructions">
 								Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
 							</p>
 						</div>
 					</main>
 				</article>
-				<article class="recipeItem">
-					<header class="imageContainer">
+				<article class="recipe-card">
+					<header class="image-wrapper">
 
 					</header>
 
-					<main class="recipeDetails">
-						<div class="recipeHeader">
-							<h2>Limonade de Coco</h2>
-							<span>
+					<main class="details">
+						<div class="header">
+							<h2 class="title">Limonade de Coco</h2>
+							<span class="time-wrapper">
 								<img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
 								<time>10 min</time>
 							</span>
 						</div>
 
-						<div class="recipeText">
-							<ul class="recipeIngredients">
+						<div class="text">
+							<ul class="ingredients">
 								<li>
 									<span>Lait de coco: </span>
 									<span>400ml</span>
@@ -290,7 +323,7 @@
 								</li>
 							</ul>
 
-							<p class="recipeInstruction">
+							<p class="instructions">
 								Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
 							</p>
 						</div>

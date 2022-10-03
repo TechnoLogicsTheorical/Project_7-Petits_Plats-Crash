@@ -1,212 +1,211 @@
+@charset "UTF-8";
+/*
+  ---------------------------------
+  [           Basics              ]
+  ---------------------------------
+*/
+:root {
+  --blue-color: #3282F7;
+  --green-color: #68D9A4;
+  --orange-color: #ED6454;
+}
+
 *, :before, :after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    margin: 0 100px;
-    font-family: 'Lato', sans-serif;
-    font-size: 18px;
+  margin: 0 100px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
 }
 
-:root {
-    --blue-color: #3282F7;
-    --green-color: #68D9A4;
-    --orange-color: #ED6454;
+#MAIN_HEADER {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+  margin-bottom: 17px;
 }
 
-/*-------------------------------------*/
-#mainHeader {
-    display: flex;
-    justify-content: center;
-    margin-top: 42px;
-    margin-bottom: 17px;
+#MAIN_HEADER img {
+  width: 268px;
+  height: auto;
 }
 
-#mainHeader img {
-    width: 268px;
-    height: auto;
-}
-/*-------------------------------------*/
-
-/* Définir le reset des inputs*/
-#searchContainer input {
-    height: 69px;
-    border: none;
-
-}
-
-/* Bar de recettes avec le button de recherche */
-#searchRecipeContainer {
-    position: relative;
+/*
+  ---------------------------------
+  [           Components          ]
+  ---------------------------------
+*/
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  height: 69px;
+  border-radius: 5px;
 }
 
-#searchRecipeContainer #recipesSearch {
-    width: 100%;
-    padding: 24px;
-    font-size: inherit;
-
-    border-radius: 5px;
-    background: #E7E7E7;
+#RECIPES_BAR {
+  position: relative;
+}
+#RECIPES_BAR .btn {
+  width: 100%;
+  padding: 24px;
+  font-size: inherit;
+  background: #E7E7E7;
+}
+#RECIPES_BAR .icon {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 22px);
+  right: 10px;
 }
 
-#searchContainer #recipesSearch + button {
-    appearance: none;
-    border: none;
-    background: transparent;
-
-    position: absolute;
-    top: calc(50% - 22px);
-    right: 10px;
+.filter-element {
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
-/*-------------------------------------*/
-#activeFiltersSearch {
-    margin-top: 25px;
-}
-
-.filterElement {
-    display: inline-flex;
-    align-items: center;
-    color: white;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 5px;
+.filter-element button {
+  border: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 11px;
 }
 
-.filterElement button {
-    margin-left: 11px;
-    border: none;
-    appearance: none;
-    background: transparent;
-    cursor:pointer;
+.filter-element.ingredient {
+  background: var(--blue-color);
+}
+.filter-element.equipment {
+  background: var(--green-color);
+}
+.filter-element.utensil {
+  background: var(--orange-color);
 }
 
-/*-------------------------------------*/
-#extraButtonsSearchContainer {
-    display: flex;
-    column-gap: 20px;
-    margin: 25px auto;
+#ACTIVE_FILTERS {
+  margin-top: 25px;
+}
+/* Permet de supprimer les fléches existantes sur les inputs */
+input::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+}
+
+.btn-wrapper {
+  position: relative;
+}
+.btn-wrapper .arrow-icon {
+  width: 32px;
+  height: 32px;
+  background: url("../img/icons/arrow.png");
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 16px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+#ingredientsSearch {
+  background: var(--blue-color);
+}
+
+#equipmentsSearch {
+  background: var(--green-color);
+}
+
+#utensilsSearch {
+  background: var(--orange-color);
+}
+
+#ingredientsSearch::placeholder,
+#equipmentsSearch::placeholder,
+#utensilsSearch::placeholder {
+  color: inherit;
 }
 
 /* Boutons de recherche extras */
 #ingredientsSearch,
 #equipmentsSearch,
 #utensilsSearch {
-    width: 170px;
-    padding-left: 15px;
-    font-size: inherit;
-    border-radius: 5px;
-    color: white;
-
-    position: relative;
+  width: 170px;
+  padding-left: 15px;
+  font-size: inherit;
+  border-radius: 5px;
+  color: white;
+  position: relative;
 }
 
-#ingredientsSearch::placeholder,
-#equipmentsSearch::placeholder,
-#utensilsSearch::placeholder {
-    color: inherit;
+#EXTRAS_BUTTONS {
+  display: flex;
+  column-gap: 20px;
+  margin: 25px auto;
 }
 
-#ingredientsSearch,
-.filterElement.ingredientColor {
-    background: var(--blue-color);
+.recipe-card {
+  min-width: 380px;
+  width: 30%;
+  background: #E7E7E7;
+  border-radius: 5px;
+  margin-bottom: 50px;
 }
 
-#equipmentsSearch,
-.filterElement.equipmentColor {
-    background: var(--green-color);
+.recipe-card .image-wrapper {
+  background: #C7BEBE;
+  height: 178px;
+  border-radius: 5px 5px 0 0;
 }
 
-#utensilsSearch,
-.filterElement.utensilColor {
-    background: var(--orange-color);
+.recipe-card .details {
+  padding: 20px;
+}
+.recipe-card .details .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.recipe-card .details .header .title {
+  font-weight: normal;
+  font-size: inherit;
+}
+.recipe-card .details .header .time-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.recipe-card .details .header .time-wrapper .time {
+  margin-left: 5px;
+  font-weight: bold;
+}
+.recipe-card .details .text {
+  font-size: 12px;
+  display: flex;
+}
+.recipe-card .details .text .ingredients {
+  list-style: none;
+}
+.recipe-card .details .text .ingredients li > span:first-of-type {
+  font-weight: bold;
+}
+.recipe-card .details .text .ingredients,
+.recipe-card .details .text .instructions {
+  width: 50%;
 }
 
-/* Permet de supprimer les fléches existantes sur les inputs */
-input::-webkit-calendar-picker-indicator {
-    display: none;
-    opacity: 0;
-}
-.btn_container {
-    position: relative;
+#RECIPES {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.arrowElement {
-    width: 32px;
-    height: 32px;
-    background: url("../img/icons/arrow.png");
-
-    position: absolute;
-    top: calc(50% - 16px);
-    right: 16px;
-    z-index: 2;
-    cursor: pointer;
-}
-
-/*-------------------------------------*/
-#recipesContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.recipeItem {
-    min-width: 380px;
-    width: 30%;
-    background: #E7E7E7;
-    border-radius: 5px;
-    margin-bottom: 50px;
-}
-
-.recipeItem .imageContainer {
-    background: #C7BEBE;
-    height: 178px;
-    border-radius: 5px 5px 0 0;
-}
-
-.recipeDetails {
-   padding: 20px;
-}
-
-
-.recipeHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.recipeHeader h2 {
-    font-weight: normal;
-    font-size: inherit;
-}
-
-.recipeHeader span {
-    display: flex;
-    justify-content: center;
-}
-
-.recipeHeader time {
-    margin-left: 5px;
-    font-weight: bold;
-}
-
-
-.recipeText {
-    font-size: 12px;
-    display: flex;
-}
-
-.recipeIngredients {
-    list-style: none;
-}
-
-.recipeIngredients li>span:first-of-type {
-    font-weight: bold;
-}
-
-.recipeIngredients,
-.recipeInstruction {
-    width: 50%;
-}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,49 @@
+/* Permet de supprimer les fléches existantes sur les inputs */
+input::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+}
+
+.btn-wrapper {
+  position: relative;
+  .arrow-icon {
+    width: 32px;
+    height: 32px;
+    background: url("../img/icons/arrow.png");
+
+    position: absolute;
+    top: calc(50% - 16px);
+    right: 16px;
+    z-index: 2;
+    cursor: pointer;
+  }
+}
+
+#ingredientsSearch {
+  background: var(--blue-color);
+}
+#equipmentsSearch {
+  background: var(--green-color);
+}
+#utensilsSearch {
+  background: var(--orange-color);
+}
+
+#ingredientsSearch::placeholder,
+#equipmentsSearch::placeholder,
+#utensilsSearch::placeholder {
+  color: inherit;
+}
+
+/* Boutons de recherche extras */
+#ingredientsSearch,
+#equipmentsSearch,
+#utensilsSearch {
+  width: 170px;
+  padding-left: 15px;
+  font-size: inherit;
+  border-radius: 5px;
+  color: white;
+
+  position: relative;
+}
