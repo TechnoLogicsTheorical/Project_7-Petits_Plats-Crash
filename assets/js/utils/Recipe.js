@@ -1,7 +1,47 @@
 class Recipe {
     constructor(data) {
         this._name = data.name;
+        this._time = data.time;
+        this._description = data.description;
 
+        this._ingredients = data.ingredients;
+    }
+
+    createIngredientsList() {
+        let finalStringElements = '';
+
+        this._ingredients.forEach( (ingredient) => {
+            this._ingredientName = ingredient.ingredient;
+            if (ingredient.hasOwnProperty('quantity') && ingredient.hasOwnProperty('unit')) {
+                this._ingredientQuantity = ingredient.quantity;
+                this._ingredientUnit = ingredient.unit;
+
+                finalStringElements += `
+                    <li>
+                        <span>${this._ingredientName}: </span>
+                        <span>${this._ingredientQuantity} ${this._ingredientUnit}</span>
+                    </li>
+                `;
+            }
+            else if (ingredient.hasOwnProperty('quantity')) {
+                this._ingredientQuantity = ingredient.quantity;
+
+                finalStringElements += `
+                    <li>
+                        <span>${this._ingredientName}: </span>
+                        <span>${this._ingredientQuantity}</span>
+                    </li>
+                `;
+            } else {
+                finalStringElements += `
+                    <li>
+                        <span>${this._ingredientName} </span>
+                    </li>
+                `;
+            }
+        });
+
+        return finalStringElements;
     }
 
     createCard() {
@@ -16,36 +56,17 @@ class Recipe {
                         <h2 class="title">${this._name}</h2>
                         <span class="time-wrapper">
                             <img src="assets/img/icons/recipeTime.svg" alt="Temps de préparation">
-                            <time>10 min</time>
+                            <time>${this._time} min</time>
                         </span>
                     </div>
 
                     <div class="text">
                         <ul class="ingredients">
-                            <li>
-                                <span>Lait de coco: </span>
-                                <span>400ml</span>
-                            </li>
-                            <li>
-                                <span>Jus de Citron: </span>
-                                <span>2</span>
-                            </li>
-                            <li>
-                                <span>Créme de coco: </span>
-                                <span>4 cuillères</span>
-                            </li>
-                            <li>
-                                <span>Sucre: </span>
-                                <span>20g</span>
-                            </li>
-                            <li>
-                                <span>Glonçons: </span>
-                                <span>2</span>
-                            </li>
+                            ${this.createIngredientsList()}
                         </ul>
 
                         <p class="instructions">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.
+                            ${this._description}
                         </p>
                     </div>
                 </main>
