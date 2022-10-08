@@ -9,6 +9,16 @@ function displayRecipes(recipes) {
     });
 }
 
+function concatArrayWithoutDuplicates(arr1, arr2) {
+    let result = [];
+    result = arr1.concat(
+        arr2.filter(
+            (item) => arr1.indexOf(item) < 0
+        )
+    );
+    return result;
+}
+
 function mainSearch() {
     const inputSearchBar = document.getElementById('recipesSearch');
     
@@ -16,51 +26,51 @@ function mainSearch() {
         const element = event.target;
         if ( element.value.length > 2 ) {
             // Recherche dans le champ du titre
-            let recipesFiltered =
-                recipes.filter(
-                    (recipe) => {
-                        let value = element.value.toLowerCase();
-                        return recipe.name
-                            .toLowerCase()
-                            .includes(value)
-                    }
-                );
+            const titleRecipes = recipes.filter(
+                (recipe) => {
+                    let value = element.value.toLowerCase();
+                    return recipe.name
+                        .toLowerCase()
+                        .includes(value)
+                }
+            );
 
             // Recherche dans le champ de la description
-            recipesFiltered =
-                recipes.filter(
-                    (recipe) => {
-                        let value = element.value.toLowerCase();
-                        return recipe.description
-                            .toLowerCase()
-                            .includes(value)
-                    }
-                );
+            const describeRecipes = recipes.filter(
+                (recipe) => {
+                    let value = element.value.toLowerCase();
+                    return recipe.description
+                        .toLowerCase()
+                        .includes(value)
+                }
+            );
 
             // Recherche dans le tableau des ingrédients
-            recipesFiltered =
-                recipes.filter(
-                    (recipe) => {
-                        let value = element.value.toLowerCase();
-                        // console.log( recipe.ingredients.forEach(
-                        //     (ingredient) => {
-                        //         return ingredient.ingredient
-                        //             .toLowerCase()
-                        //             .includes(value)
-                        //     }
-                        // ));
+            const ingredientRecipes = recipes.filter(
+                (recipe) => {
+                    let value = element.value.toLowerCase();
+                    // console.log( recipe.ingredients.forEach(
+                    //     (ingredient) => {
+                    //         return ingredient.ingredient
+                    //             .toLowerCase()
+                    //             .includes(value)
+                    //     }
+                    // ));
 
-                        let ingredientsRecipe = recipe.ingredients;
+                    let ingredientsRecipe = recipe.ingredients;
 
-                        for (let i = 0; i < ingredientsRecipe.length; i++) {
-                            return (ingredientsRecipe[i].ingredient
-                                .toLowerCase()
-                                .includes(value));
-                        };
+                    for (let i = 0; i < ingredientsRecipe.length; i++) {
+                        return (ingredientsRecipe[i].ingredient
+                            .toLowerCase()
+                            .includes(value));
                     }
-                );
+                }
+            );
 
-            displayRecipes(recipesFiltered);
+            let allRecipes = concatArrayWithoutDuplicates(titleRecipes, describeRecipes);
+            allRecipes = concatArrayWithoutDuplicates(allRecipes, ingredientRecipes);
+
+            displayRecipes(allRecipes);
         } else {
             displayRecipes(recipes);
         }
