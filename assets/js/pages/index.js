@@ -1,3 +1,7 @@
+/**
+ * Fonction d'affichage de toutes les recettes dans le conteneur associée
+ * @param {object[]} recipes Tableau d'objets contenant toutes les recettes
+ */
 function displayRecipes(recipes) {
     const recipeContainer = document.getElementById('RECIPES');
     recipeContainer.innerHTML = "";
@@ -9,6 +13,12 @@ function displayRecipes(recipes) {
     });
 }
 
+/**
+ * Fonction permettant de concaténer deux tableau en un resultat et en filtrant les données qui pourrais déjà exister
+ * @param {object[]} arr1 Tableau d'objet n°1
+ * @param {object[]} arr2 Tableau d'objet n°2
+ * @returns {object[]} Retourne un tableau d'objet avec des ensembles uniques
+ */
 function concatArrayWithoutDuplicates(arr1, arr2) {
     let result = [];
     result = arr1.concat(
@@ -19,7 +29,22 @@ function concatArrayWithoutDuplicates(arr1, arr2) {
     return result;
 }
 
+/**
+ * Fonction permettant d'annuler le comportement du bouton inclus dans le formulaire
+ */
+function cancelSubmit() {
+    const submitButton = document.querySelector('#RECIPES_BAR button[type="submit"]');
+    submitButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+}
+
+/**
+ * Fonction de la barre de recherche principale
+ */
 function mainSearch() {
+    cancelSubmit();
     const inputSearchBar = document.getElementById('recipesSearch');
     
     inputSearchBar.addEventListener( 'keyup', (event) => {
@@ -74,13 +99,28 @@ function mainSearch() {
         } else {
             displayRecipes(recipes);
         }
-        
     });
+}
+
+function createListData() {
+    const ingredientsData = document.querySelector('#ingredientsList');
+    const equipmentsData = document.querySelector('#equipmentsList');
+    const utensilsData = document.querySelector('#utensilsList');
+
+    recipes.forEach( (recipe) => {
+        const ingredientItemName = new Ingredients(recipe);
+        ingredientItemName.getAllIngredients();
+    });
+}
+
+function hdyrateSearch() {
+    createListData();
 }
 
 function init() {
     displayRecipes(recipes);
     mainSearch();
+    hdyrateSearch();
 }
 
 init();

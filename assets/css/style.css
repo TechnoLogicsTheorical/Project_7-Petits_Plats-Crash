@@ -151,7 +151,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #EXTRAS_BUTTONS {
-  display: none;
+  display: flex;
   column-gap: 20px;
   margin: 25px auto;
 }

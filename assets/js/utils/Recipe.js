@@ -7,6 +7,10 @@ class Recipe {
         this._ingredients = data.ingredients;
     }
 
+    /**
+     * Fonction qui retourne une chaine de caractere complète pour générer la liste des ingrédients en HTML
+     * @returns {string}
+     */
     createIngredientsList() {
         let finalStringElements = '';
 
@@ -44,6 +48,10 @@ class Recipe {
         return finalStringElements;
     }
 
+    /**
+     * Créer une carte HTML contenant une recette générer avec toutes les informations complétées ...
+     * @returns {string}
+     */
     createCard() {
         return `
             <article class="recipe-card">
