@@ -22,12 +22,13 @@
 	
 		<main>
 			<section>
-				<form id="RECIPES_BAR">
+				<form role="search" id="RECIPES_BAR">
 					<input type="search"
 					       name="recipesQuery"
 					       id="recipesSearch"
 					       class="btn"
 					       placeholder="Recherche une recette"
+					       autocomplete="off"
 					>
 					<button
 						type="submit"
@@ -61,13 +62,10 @@
 								id="ingredientsSearch"
 								class="btn"
 								placeholder="Ingrédients"
-								list="ingredientsList"
 						>
-						<datalist id="ingredientsList">
-							<option value="Lait de coco">
-							<option value="Sucre">
-							<option value="Concombre">
-						</datalist>
+						<ul id="ingredientsList">
+							<!--    Dynamic Generated in JS option value    -->
+						</ul>
 					</div>
 
 					<div class="btn-wrapper">
@@ -78,13 +76,10 @@
 								id="equipmentsSearch"
 								class="btn"
 								placeholder="Appareils"
-								list="equipmentsList"
 						>
-						<datalist id="equipmentsList">
-							<option value="Lait de coco">
-							<option value="Sucre">
-							<option value="Concombre">
-						</datalist>
+						<ul id="equipmentsList">
+
+						</ul>
 					</div>
 
 					<div class="btn-wrapper">
@@ -95,13 +90,10 @@
 								id="utensilsSearch"
 								class="btn"
 								placeholder="Ustensiles"
-								list="utensilsList"
 						>
-						<datalist id="utensilsList">
-							<option value="Lait de coco">
-							<option value="Sucre">
-							<option value="Concombre">
-						</datalist>
+						<ul id="ustensilsList">
+
+						</ul>
 					</div>
 
 				</div>
@@ -115,8 +107,7 @@
 		</main>
 
 		<script src="assets/js/data/recipes.js"></script>
-		<script src="assets/js/utils/Ingredients.js"></script>
 		<script src="assets/js/utils/Recipe.js"></script>
-		<script src="assets/js/pages/index.js"></script>
+		<script type="module" src="assets/js/pages/index.js"></script>
 	</body>
 </html>
