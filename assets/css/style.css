@@ -120,6 +120,10 @@ input::-webkit-calendar-picker-indicator {
   right: 16px;
   z-index: 2;
   cursor: pointer;
+  transition: transform 0.6s ease-in-out;
+}
+.btn-wrapper .arrow-icon.rotate {
+  transform: rotate(180deg);
 }
 
 #ingredientsSearch,
@@ -133,6 +137,7 @@ input::-webkit-calendar-picker-indicator {
   width: auto;
   min-width: 170px;
   max-width: 670px;
+  transition: width 0.6s ease-in-out;
 }
 
 #ingredientsSearch {

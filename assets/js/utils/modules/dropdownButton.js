@@ -53,6 +53,8 @@ function createListData(recipes) {
     ustensilsList.innerHTML = generateDOM(ustensilsData);
 
     attachEvent();
+    attachClickEvent();
+    focusedInput();
 }
 
 function attachEvent() {
@@ -61,8 +63,51 @@ function attachEvent() {
     const ustensilsListElements = document.querySelectorAll('#ustensilsList li');
 
     ingredientsListElements.forEach((itemIngredientList) => itemIngredientList.addEventListener('click', (e) => {
-        let value = e.target.innerText;
+        let clickedOption = e.target.innerText;
+        // TODO: Quand la valeur à été clickée transmettre à une fonction de gestion d'evenement
     }))
 }
 
+// TODO: Quand je clicke sur Arrow-icon, faire une rotation CSS + afficher la liste d'élément
+
+function attachClickEvent() {
+    const buttonsShow = document.querySelectorAll('.arrow-icon');
+
+    buttonsShow.forEach( button => {
+        button.addEventListener('click', (event) => {
+            showMenu(event);
+            button.classList.toggle('rotate');
+        });
+    });
+}
+
+function focusedInput() {
+    const allInputs = document.querySelectorAll('#EXTRAS_BUTTONS input');
+    allInputs.forEach( input => {
+        input.addEventListener('focusin', (event) => {
+            showMenu(event);
+
+            const button = event.target.offsetParent.firstElementChild;
+            button.classList.toggle('rotate');
+        });
+        input.addEventListener('focusout', event => {
+            showMenu(event)
+
+            const button = event.target.offsetParent.firstElementChild;
+            button.classList.toggle('rotate');
+        })
+    });
+}
+
+function showMenu(event) {
+    // changer la valeur Aria-hidden sur l'element list
+    const targetMenu = event.target.offsetParent.nextElementSibling;
+
+    // Custom toggle for Aria-hidden
+    if (targetMenu.ariaHidden === 'true') {
+        targetMenu.ariaHidden = false;
+    } else if (targetMenu.ariaHidden === 'false') {
+        targetMenu.ariaHidden = true;
+    }
+}
 export { createListData }
