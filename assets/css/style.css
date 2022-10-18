@@ -117,9 +117,22 @@ input::-webkit-calendar-picker-indicator {
   background: url("../img/icons/arrow.png");
   position: absolute;
   top: 16px;
-  left: 128px;
+  right: 16px;
   z-index: 2;
   cursor: pointer;
+}
+
+#ingredientsSearch,
+#equipmentsSearch,
+#ustensilsSearch {
+  border-radius: 5px;
+  color: white;
+  position: relative;
+  height: min-content;
+  max-height: 400px;
+  width: auto;
+  min-width: 170px;
+  max-width: 670px;
 }
 
 #ingredientsSearch {
@@ -130,27 +143,56 @@ input::-webkit-calendar-picker-indicator {
   background: var(--green-color);
 }
 
-#utensilsSearch {
+#ustensilsSearch {
   background: var(--orange-color);
 }
 
-#ingredientsSearch::placeholder,
-#equipmentsSearch::placeholder,
-#utensilsSearch::placeholder {
-  color: inherit;
+#ingredientsSearch input::placeholder,
+#equipmentsSearch input::placeholder,
+#ustensilsSearch input::placeholder {
+  color: rgba(255, 255, 255, 0.57);
 }
 
 /* Boutons de recherche extras */
-#ingredientsSearch,
-#equipmentsSearch,
-#utensilsSearch {
-  width: 170px;
+#ingredientsSearch input,
+#equipmentsSearch input,
+#ustensilsSearch input {
+  background-color: inherit;
+  min-width: 170px;
   padding-left: 15px;
   font-size: inherit;
-  border-radius: 5px;
   color: white;
-  margin-bottom: 15px;
   position: relative;
+}
+
+.listContainer {
+  padding: 15px 20px;
+  list-style-type: none;
+  display: flex;
+  flex-flow: wrap column;
+  height: 310px;
+  width: auto;
+  overflow-x: auto;
+}
+
+.listContainer li {
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 5px 0;
+  display: block;
+  width: 236px;
+}
+
+#ingredientsList[aria-hidden=true],
+#equipmentsList[aria-hidden=true],
+#ustensilsList[aria-hidden=true] {
+  display: none;
+}
+
+#ingredientsSearch:has(ul[aria-hidden=false]),
+#equipmentsSearch:has(ul[aria-hidden=false]),
+#ustensilsSearch:has(ul[aria-hidden=false]) {
+  width: -webkit-fill-available;
 }
 
 #EXTRAS_BUTTONS {
@@ -165,8 +207,6 @@ input::-webkit-calendar-picker-indicator {
   width: 30%;
   background: #E7E7E7;
   border-radius: 5px;
-  margin-bottom: 50px;
-  margin-right: auto;
 }
 
 .recipe-card .image-wrapper {
@@ -215,6 +255,8 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   flex-wrap: wrap;
   margin: 25px auto;
+  justify-content: center;
+  gap: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -44,7 +44,6 @@ class Recipe {
                 `;
             }
         });
-
         return finalStringElements;
     }
 

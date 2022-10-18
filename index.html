@@ -54,47 +54,50 @@
 
 				<div id="EXTRAS_BUTTONS">
 
-					<div class="btn-wrapper">
-						<span class="arrow-icon"></span>
-						<input
-								type="search"
-								name="ingredientsQuery"
-								id="ingredientsSearch"
-								class="btn"
-								placeholder="Ingrédients"
-						>
-						<ul id="ingredientsList">
+					<form role="search" id="ingredientsSearch">
+						<div class="btn-wrapper">
+							<span class="arrow-icon"></span>
+							<input
+									type="search"
+									name="ingredientsQuery"
+									class="btn"
+									placeholder="Ingrédients"
+							>
+						</div>
+						<ul id="ingredientsList" class="listContainer" aria-hidden="true">
 							<!--    Dynamic Generated in JS option value    -->
 						</ul>
-					</div>
+					</form>
 
-					<div class="btn-wrapper">
-						<span class="arrow-icon"></span>
-						<input
-								type="search"
-								name="equipmentsQuery"
-								id="equipmentsSearch"
-								class="btn"
-								placeholder="Appareils"
-						>
-						<ul id="equipmentsList">
+					<form role="search" id="equipmentsSearch">
+						<div class="btn-wrapper">
+							<span class="arrow-icon"></span>
+							<input
+									type="search"
+									name="equipmentsQuery"
+									class="btn"
+									placeholder="Appareils"
+							>
+							<ul id="equipmentsList" class="listContainer" aria-hidden="true">
+								<!--    Dynamic Generated in JS option value    -->
+							</ul>
+						</div>
+					</form>
 
-						</ul>
-					</div>
-
-					<div class="btn-wrapper">
-						<span class="arrow-icon"></span>
-						<input
-								type="search"
-						        name="utensilsQuery"
-								id="utensilsSearch"
-								class="btn"
-								placeholder="Ustensiles"
-						>
-						<ul id="ustensilsList">
-
-						</ul>
-					</div>
+					<form role="search" id="ustensilsSearch">
+						<div class="btn-wrapper">
+							<span class="arrow-icon"></span>
+							<input
+									type="search"
+									name="ustensilsQuery"
+									class="btn"
+									placeholder="Ustensiles"
+							>
+							<ul id="ustensilsList" class="listContainer" aria-hidden="true">
+								<!--    Dynamic Generated in JS option value    -->
+							</ul>
+						</div>
+					</form>
 
 				</div>
 			</section>

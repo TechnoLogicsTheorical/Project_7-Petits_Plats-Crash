@@ -21,16 +21,17 @@ function mainSearch() {
         if ( element.value.length > 2 ) {
             // Recherche dans le champ du titre && le champ de la description && tableau des ingrédients
             const allRecipes = recipes.filter(
-                (recipe) =>  recipe.name.toLowerCase().includes(element.value.toLowerCase()) || recipe.description.toLowerCase().includes(element.value.toLowerCase()) || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(element.value.toLowerCase()))
+                (recipe) => {
+                    return recipe.name.toLowerCase().includes(element.value.toLowerCase())
+                        || recipe.description.toLowerCase().includes(element.value.toLowerCase())
+                        || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(element.value.toLowerCase()))
+                }
             );
-
             displayRecipes(allRecipes);
-            hdyrateSearch(allRecipes);
         } else {
             displayRecipes(recipes);
         }
     });
 }
-
 
 export { mainSearch };
