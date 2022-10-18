@@ -1,3 +1,5 @@
+import { createTag } from "../modules/tagManager.js";
+
 function gettingValues(recipes) {
     // currentRecipes => Contient un tableau [ ] contenant lui même des objets
     // On va d'abord boucler sur le grand tableau pour accèder aux objets
@@ -65,6 +67,7 @@ function attachEvent() {
     ingredientsListElements.forEach((itemIngredientList) => itemIngredientList.addEventListener('click', (e) => {
         let clickedOption = e.target.innerText;
         // TODO: Quand la valeur à été clickée transmettre à une fonction de gestion d'evenement
+        createTag(clickedOption, 'ingredient');
     }))
 }
 
