@@ -1,3 +1,6 @@
+import { displayRecipes} from "../../pages/index.js";
+import { createListData } from "../modules/dropdownButton.js";
+
 /**
  * Fonction permettant d'annuler le comportement du bouton inclus dans le formulaire
  */
@@ -20,16 +23,18 @@ function mainSearch() {
         const element = event.target;
         if ( element.value.length > 2 ) {
             // Recherche dans le champ du titre && le champ de la description && tableau des ingrédients
-            const allRecipes = recipes.filter(
+            const filteredRecipes = recipes.filter(
                 (recipe) => {
                     return recipe.name.toLowerCase().includes(element.value.toLowerCase())
                         || recipe.description.toLowerCase().includes(element.value.toLowerCase())
                         || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(element.value.toLowerCase()))
                 }
             );
-            displayRecipes(allRecipes);
+            displayRecipes(filteredRecipes);
+            createListData(filteredRecipes);
         } else {
             displayRecipes(recipes);
+            createListData(recipes);
         }
     });
 }

@@ -1,3 +1,4 @@
+import { Interface } from "../../pages/index.js";
 import { createTag } from "../modules/tagManager.js";
 
 function gettingValues(recipes) {
@@ -65,9 +66,19 @@ function attachEvent() {
     const ustensilsListElements = document.querySelectorAll('#ustensilsList li');
 
     ingredientsListElements.forEach((itemIngredientList) => itemIngredientList.addEventListener('click', (e) => {
-        let clickedOption = e.target.innerText;
+        let selectedIngredient = e.target.innerText;
+        console.log('click event', selectedIngredient)
         // TODO: Quand la valeur à été clickée transmettre à une fonction de gestion d'evenement
-        createTag(clickedOption, 'ingredient');
+        createTag(selectedIngredient, 'ingredient');
+
+        // Recherche dans le champ du titre && le champ de la description && tableau des ingrédients
+        const filteredRecipes = recipes.filter(
+            (recipe) => {
+                return recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase()))
+            }
+        );
+        Interface.displayRecipes(filteredRecipes);
+        createListData(filteredRecipes);
     }))
 }
 
@@ -85,21 +96,22 @@ function attachClickEvent() {
 }
 
 function focusedInput() {
-    const allInputs = document.querySelectorAll('#EXTRAS_BUTTONS input');
-    allInputs.forEach( input => {
-        input.addEventListener('focusin', (event) => {
-            showMenu(event);
-
-            const button = event.target.offsetParent.firstElementChild;
-            button.classList.toggle('rotate');
-        });
-        input.addEventListener('focusout', event => {
-            showMenu(event)
-
-            const button = event.target.offsetParent.firstElementChild;
-            button.classList.toggle('rotate');
-        })
-    });
+    // TODO : Modifier en fonction simple -> clicked
+    // const allInputs = document.querySelectorAll('#EXTRAS_BUTTONS input');
+    // allInputs.forEach( input => {
+    //     input.addEventListener('focusin', (event) => {
+    //         showMenu(event);
+    //
+    //         const button = event.target.offsetParent.firstElementChild;
+    //         button.classList.toggle('rotate');
+    //     });
+    //     input.addEventListener('focusout', event => {
+    //         showMenu(event)
+    //
+    //         const button = event.target.offsetParent.firstElementChild;
+    //         button.classList.toggle('rotate');
+    //     })
+    // });
 }
 
 function showMenu(event) {
@@ -113,4 +125,5 @@ function showMenu(event) {
         targetMenu.ariaHidden = true;
     }
 }
+
 export { createListData }

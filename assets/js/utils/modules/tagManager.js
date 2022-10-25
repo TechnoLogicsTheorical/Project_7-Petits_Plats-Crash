@@ -19,7 +19,6 @@ function createTag(selectedText, addingClass) {
     }
     recipeTagContainer.innerHTML += generateDOMTag(selectedText, addingClass);
 
-    console.log('hhhee')
     attachDeleteEvent();
 }
 
@@ -30,6 +29,19 @@ function attachDeleteEvent() {
         button.addEventListener('click', (event) => {
             const addictiveFilterElement = event.target.parentElement.parentElement;
             addictiveFilterElement.remove();
+
+            /*
+                Je dois relancer la recherche principale +
+                Je relance la recherche des tags
+
+             */
+            //
+            const addictiveFilter = 'Resultat de la recherche principal';
+            // Je liste les tags ...
+            // Je parcours la liste des tags
+                // Je relance le filtre par rapport à un tag
+
+            // J'affiche mon tableau filtrée avec displayRecipes
         });
     })
 }
