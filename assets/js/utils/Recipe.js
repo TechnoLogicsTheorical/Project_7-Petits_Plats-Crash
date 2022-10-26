@@ -1,4 +1,4 @@
-class Recipe {
+export class Recipe {
     constructor(data) {
         this._name = data.name;
         this._time = data.time;

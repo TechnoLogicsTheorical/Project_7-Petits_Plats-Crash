@@ -1,5 +1,4 @@
-import { displayRecipes} from "../../pages/index.js";
-import { createListData } from "../modules/dropdownButton.js";
+import { Interface } from "../../pages/index.js";
 
 /**
  * Fonction permettant d'annuler le comportement du bouton inclus dans le formulaire
@@ -30,11 +29,11 @@ function mainSearch() {
                         || recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(element.value.toLowerCase()))
                 }
             );
-            displayRecipes(filteredRecipes);
-            createListData(filteredRecipes);
+            Interface.displayRecipes(filteredRecipes);
+            Interface.createDropdownListData(filteredRecipes);
         } else {
-            displayRecipes(recipes);
-            createListData(recipes);
+            Interface.displayRecipes(recipes);
+            Interface.createDropdownListData(recipes);
         }
     });
 }

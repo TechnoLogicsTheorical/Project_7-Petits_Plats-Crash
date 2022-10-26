@@ -1,129 +1,71 @@
 import { Interface } from "../../pages/index.js";
-import { createTag } from "../modules/tagManager.js";
 
-function gettingValues(recipes) {
-    // currentRecipes => Contient un tableau [ ] contenant lui même des objets
-    // On va d'abord boucler sur le grand tableau pour accèder aux objets
+const InternalDropdownFunctions = {
 
-    let ingredientsRecipesList = [];
-    let equipementsRecipesList = [];
-    let ustensilsRecipesList = [];
+    clearList(listElement) {
+        listElement.innerHTML = '';
+    },
+    gettingValues(recipes) {
+        // currentRecipes => Contient un tableau [ ] contenant lui même des objets
+        // On va d'abord boucler sur le grand tableau pour accèder aux objets
 
-    recipes.forEach( recipe => {
-        // On parcours le tableau des ingredients et on ajoute un élément, si la condition est uniquement validée
-        recipe.ingredients.forEach( ingredient => ingredientsRecipesList.push(ingredient.ingredient.toLowerCase()));
+        let ingredientsRecipesList = [];
+        let equipementsRecipesList = [];
+        let ustensilsRecipesList = [];
 
-        equipementsRecipesList.push(recipe.appliance.toLowerCase());
-
-        recipe.ustensils.forEach( ustensil => ustensilsRecipesList.push(ustensil.toLowerCase()));
-    });
-
-    ingredientsRecipesList = [...new Set(ingredientsRecipesList.sort())];
-    equipementsRecipesList = [...new Set(equipementsRecipesList.sort())];
-    ustensilsRecipesList = [...new Set(ustensilsRecipesList.sort())];
-
-    return ([
-        ingredientsRecipesList,
-        equipementsRecipesList,
-        ustensilsRecipesList
-    ])
-}
-
-function generateDOM(allResultRecipesString) {
-    // Générer toutes les balises : <option value="Lait de coco">
-    let resultString = '';
-
-    for ( let string of allResultRecipesString ) {
-        resultString += (`<li>${string}</li>`);
-    }
-    return resultString;
-}
-
-function createListData(recipes) {
-    const ingredientsList = document.querySelector('#ingredientsList');
-    const equipmentsList = document.querySelector('#equipmentsList');
-    const ustensilsList = document.querySelector('#ustensilsList');
-
-    const [ingredientsData, equipmentsData, ustensilsData] = gettingValues(recipes);
-
-    ingredientsList.innerHTML = '';
-    ingredientsList.innerHTML = generateDOM(ingredientsData);
-
-    equipmentsList.innerHTML = '';
-    equipmentsList.innerHTML = generateDOM(equipmentsData);
-
-    ustensilsList.innerHTML = '';
-    ustensilsList.innerHTML = generateDOM(ustensilsData);
-
-    attachEvent();
-    attachClickEvent();
-    focusedInput();
-}
-
-function attachEvent() {
-    const ingredientsListElements = document.querySelectorAll('#ingredientsList li');
-    const equipmentsListElements = document.querySelectorAll('#equipmentsList li');
-    const ustensilsListElements = document.querySelectorAll('#ustensilsList li');
-
-    ingredientsListElements.forEach((itemIngredientList) => itemIngredientList.addEventListener('click', (e) => {
-        let selectedIngredient = e.target.innerText;
-        console.log('click event', selectedIngredient)
-        // TODO: Quand la valeur à été clickée transmettre à une fonction de gestion d'evenement
-        createTag(selectedIngredient, 'ingredient');
-
-        // Recherche dans le champ du titre && le champ de la description && tableau des ingrédients
-        const filteredRecipes = recipes.filter(
-            (recipe) => {
-                return recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase()))
-            }
-        );
-        Interface.displayRecipes(filteredRecipes);
-        createListData(filteredRecipes);
-    }))
-}
-
-// TODO: Quand je clicke sur Arrow-icon, faire une rotation CSS + afficher la liste d'élément
-
-function attachClickEvent() {
-    const buttonsShow = document.querySelectorAll('.arrow-icon');
-
-    buttonsShow.forEach( button => {
-        button.addEventListener('click', (event) => {
-            showMenu(event);
-            button.classList.toggle('rotate');
+        recipes.forEach( recipe => {
+            // On parcours le tableau des ingredients et on ajoute un élément, si la condition est uniquement validée
+            recipe.ingredients.forEach( ingredient => ingredientsRecipesList.push(ingredient.ingredient.toLowerCase()));
+            equipementsRecipesList.push(recipe.appliance.toLowerCase());
+            recipe.ustensils.forEach( ustensil => ustensilsRecipesList.push(ustensil.toLowerCase()));
         });
-    });
-}
 
-function focusedInput() {
-    // TODO : Modifier en fonction simple -> clicked
-    // const allInputs = document.querySelectorAll('#EXTRAS_BUTTONS input');
-    // allInputs.forEach( input => {
-    //     input.addEventListener('focusin', (event) => {
-    //         showMenu(event);
-    //
-    //         const button = event.target.offsetParent.firstElementChild;
-    //         button.classList.toggle('rotate');
-    //     });
-    //     input.addEventListener('focusout', event => {
-    //         showMenu(event)
-    //
-    //         const button = event.target.offsetParent.firstElementChild;
-    //         button.classList.toggle('rotate');
-    //     })
-    // });
-}
+        ingredientsRecipesList = [...new Set(ingredientsRecipesList.sort())];
+        equipementsRecipesList = [...new Set(equipementsRecipesList.sort())];
+        ustensilsRecipesList = [...new Set(ustensilsRecipesList.sort())];
 
-function showMenu(event) {
-    // changer la valeur Aria-hidden sur l'element list
-    const targetMenu = event.target.offsetParent.nextElementSibling;
+        return ([
+            ingredientsRecipesList,
+            equipementsRecipesList,
+            ustensilsRecipesList
+        ])
+    },
 
-    // Custom toggle for Aria-hidden
-    if (targetMenu.ariaHidden === 'true') {
-        targetMenu.ariaHidden = false;
-    } else if (targetMenu.ariaHidden === 'false') {
-        targetMenu.ariaHidden = true;
+    generateDOMObjectsArray(allResultRecipesString) {
+        // Générer toutes les balises : <li>${string}</li>
+        let listElements = [];
+
+        for ( let string of allResultRecipesString ) {
+            const item = document.createElement('li');
+            item.innerText = string;
+
+            // Ajouter l'évenement de click sur l'élément générer
+            this.eventManager.attachEvent(item);
+
+            listElements.push(item);
+        }
+        return listElements;
+    },
+
+    eventManager: {
+        attachEvent(element) {
+
+            element.addEventListener('click', (event) => {
+                let selectedIngredient = event.target.innerText;
+                // TODO: Quand la valeur à été clickée transmettre à une fonction de gestion d'evenement
+                Interface.createTagElement(selectedIngredient, 'ingredient');
+
+                // Recherche dans le champ du titre && le champ de la description && tableau des ingrédients
+                const filteredRecipes = recipes.filter(
+                    (recipe) => {
+                        return recipe.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase()))
+                    }
+                );
+                Interface.displayRecipes(filteredRecipes);
+                Interface.createDropdownListData(filteredRecipes);
+            })
+        }
     }
-}
+};
 
-export { createListData }
+export { InternalDropdownFunctions }
